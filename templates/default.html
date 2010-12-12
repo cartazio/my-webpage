@@ -4,15 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>SimpleBlog - $title</title>
+
+        <title>Carter's Page - $title</title>
         <link rel="stylesheet" type="text/css" href="$root/css/default.css" />
         <link rel="alternate"
               type="application/rss+xml"
               title="SimpleBlog"
               href="$root/rss.xml" />
+    <script type="text/javascript" src="/Users/carter/MathJax/MathJax.js">
+    MathJax.Hub.Config({
+         extensions: ["tex2jax.js","tex2math.js","TeX/noErrors.js","TeX/noUndefined.js",
+                      "TeX/AMSmath.js","TeX/AMSsymbols.js"]
+         jax: ["input/TeX", "output/HTML-CSS"],
+         tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+             processClass: "LaTeX"
+         },
+         "HTML-CSS": { availableFonts: ["TeX"] }
+     });
+        </script>
+</script>
     </head>
     <body>
-        <h1>SimpleBlog - $title</h1>
+        <h1>Carter Schonwald - $title</h1>
         <div id="navigation">
             <a href="$root/index.html">Home</a>
             <a href="$root/posts.html">All posts</a>

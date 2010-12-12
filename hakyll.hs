@@ -1,7 +1,7 @@
 module Main where
 
 import Control.Arrow ((>>>))
-import Text.Hakyll (hakyll)
+import Text.Hakyll (hakyllWithConfiguration,defaultHakyllConfiguration)
 import Text.Hakyll.Render
 import Text.Hakyll.Context
 import Text.Hakyll.File (getRecursiveContents, directory)
@@ -11,22 +11,24 @@ import Text.Hakyll.Feed (FeedConfiguration (..), renderRss)
 import Data.List (sort)
 import Control.Monad (forM_, liftM)
 import Control.Monad.Reader (liftIO)
+    
 import Data.Either (Either(..))
-
-myHakyllConfig  absoluteUrl' = HakyllConfiguration
-    { absoluteUrl         = absoluteUrl'
-    , additionalContext   = mempty
-    , siteDirectory       = "_site"
-    , cacheDirectory      = "_cache"
-    , enableIndexUrl      = False
-    , previewMode         = BuildOnRequest
-    , pandocParserState   = defaultPandocParserState{stateParseRaw  = True}
-    , pandocWriterOptions = defaultPandocWriterOptions{writerHTMLMathMethod   = }
-    , hamletSettings      = defaultHamletSettings
-    }
+import Text.Pandoc.Shared
+-- import Text.Hamlet
+import Text.Hakyll.HakyllMonad
+import Text.Pandoc.Parsing
 
 
-main = myHakyllConfig "http://www.cs.dartmouth.edu/~carter" $ do
+myHakyllConfig :: String -> HakyllConfiguration
+myHakyllConfig  absoluteUrl =  
+                let r1 =   (defaultHakyllConfiguration absoluteUrl) {pandocParserState   =  defaultParserState{stateParseRaw  = False}}
+                    r2 = r1{pandocWriterOptions =   
+                                defaultWriterOptions {writerHTMLMathMethod   =  LaTeXMathML Nothing }} 
+                    in 
+                       r2
+
+
+main = hakyllWithConfiguration  (myHakyllConfig "./") $ do
     -- Static directory.
     directory css "css"
 
