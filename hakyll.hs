@@ -30,7 +30,7 @@ myHakyllConfig  absoluteUrl =
                        r2
 
 
-main = hakyllWithConfiguration  (myHakyllConfig "./") $ do
+main = hakyllWithConfiguration  (myHakyllConfig "/Users/carter/carter-web") $ do
     -- Static directory.
     directory css "css"
 
