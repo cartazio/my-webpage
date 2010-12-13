@@ -428,4 +428,12 @@ js/mathjax/unpacked/jax/output/HTML-CSS/imageFonts.js
 js/mathjax/unpacked/jax/output/HTML-CSS/jax.js
 js/mathjax/unpacked/jax/output/NativeMML/config.js
 js/mathjax/unpacked/jax/output/NativeMML/jax.js
+hakyll_cache/Users
+_cache/pages
+_cache/templates
+_site/css
+_site/feed.xml
+_site/index.html
+_site/posts
+_site/posts.html
 hakyll

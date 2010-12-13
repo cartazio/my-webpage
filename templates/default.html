@@ -9,28 +9,31 @@
         <link rel="stylesheet" type="text/css" href="$root/css/default.css" />
         <link rel="alternate"
               type="application/rss+xml"
-              title="SimpleBlog"
+              title="Carter's Page"
               href="$root/rss.xml" />
-    <script type="text/javascript" src="/Users/carter/MathJax/MathJax.js">
+    <script type="text/javascript" src="/Users/carter/mathjax/MathJax.js">
     MathJax.Hub.Config({
-         extensions: ["tex2jax.js","tex2math.js","TeX/noErrors.js","TeX/noUndefined.js",
-                      "TeX/AMSmath.js","TeX/AMSsymbols.js"]
-         jax: ["input/TeX", "output/HTML-CSS"],
-         tex2jax: {
-             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-             displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-             processClass: "LaTeX"
-         },
-         "HTML-CSS": { availableFonts: ["TeX"] }
-     });
+         extensions: ["tex2jax.js",
+                      "TeX/AMSmath.js","TeX/AMSsymbols.js"],
+         jax: ["input/TeX", "output/HTML-CSS"], delayStartupUntil: "onload"
+                                    });
         </script>
-</script>
     </head>
     <body>
+	<script type="text/javascript">
+          MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            "HTML-CSS": { scale: 100 }
+          });
+        </script>
+   
         <h1>Carter Schonwald - $title</h1>
         <div id="navigation">
             <a href="$root/index.html">Home</a>
-            <a href="$root/posts.html">All posts</a>
+            <a href="$root/research.html">Research</a>
+            <a href="$root/projects.html">Projects</a>
+            <a href="$root/code.html">Code</a>
+            <a href="$root/posts.html">Blog Post Index</a>
         </div>
 
         $body
