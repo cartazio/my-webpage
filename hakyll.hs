@@ -33,21 +33,35 @@ myHakyllConfig  absoluteUrl =
 main = hakyllWithConfiguration  (myHakyllConfig "/Users/carter/carter-web") $ do
     -- Static directory.
     directory css "css"
-
+    directory static "static"
     -- Find all post paths.
     postPaths <- liftM (reverse . sort) $ getRecursiveContents "posts"
     let postPages = map createPage postPaths
 
-    -- -- me blurb
-    -- myblurb  <- readPageAction "blurb.markdown"
-    -- addField "blurb" myblurb
 
     -- Render index, including recent posts.
     let home = createPage "home.markdown"
     let index = createListing "index.html" ["templates/postitem.html"]
-                              (take 3 postPages) [("title", Left "Home")]
+                              (take 5 postPages) [("title", Left "Home")]
     renderChain ["index.html", "templates/default.html"] $ combine index home
+                        -- uses combine trick to add blurb
 
+    -- find all research pages
+    researchPaths <- liftM (reverse . sort) $ getRecursiveContents "research"
+    let researchPages = map createPage researchPaths
+    
+    -- Render all research list
+    let research  = createListing "research.html" ["templates/summary-item.html"]
+                                    researchPages [("title",Left "My Research")]
+                                    
+    renderChain ["research.html","templates/default.html"] research 
+    
+    codePaths <- liftM (reverse . sort) $ getRecursiveContents "Code"
+    let codePages = map createPage codePaths
+    
+    let code = createListing "code.html" ["template/summary-item"]
+                                    codePages [("title", Left "My Code")]
+    
     -- Render all posts list.
     let posts = createListing "posts.html" ["templates/postitem.html"]
                               postPages [("title", Left "All posts")]
