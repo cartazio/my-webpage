@@ -22,3 +22,4 @@ _site/posts
 _site/posts.html
 hakyll
 _site/
+static/mathjax

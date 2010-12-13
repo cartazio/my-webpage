@@ -2,8 +2,9 @@
 title: Behold my new website
 date: 2010-08-23
 author: Carter Tazio Schonwald
+------ summary
+This is a test post
 ------
-
 This is my new blog / website!
 
 but will it math? $ \int_i^{\infty} f(x)dx $

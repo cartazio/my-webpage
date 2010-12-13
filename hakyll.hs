@@ -41,7 +41,7 @@ main = hakyllWithConfiguration  (myHakyllConfig "/Users/carter/carter-web") $ do
 
     -- Render index, including recent posts.
     let home = createPage "home.markdown"
-    let index = createListing "index.html" ["templates/postitem.html"]
+    let index = createListing "index.html" ["templates/summary-item.html"]
                               (take 5 postPages) [("title", Left "Home")]
     renderChain ["index.html", "templates/default.html"] $ combine index home
                         -- uses combine trick to add blurb
@@ -53,17 +53,45 @@ main = hakyllWithConfiguration  (myHakyllConfig "/Users/carter/carter-web") $ do
     -- Render all research list
     let research  = createListing "research.html" ["templates/summary-item.html"]
                                     researchPages [("title",Left "My Research")]
-                                    
-    renderChain ["research.html","templates/default.html"] research 
+    let researchBlurb = createPage "research.markdown"
+    -- render research list actually                                
+    renderChain ["research.html","templates/default.html"] $ combine research researchBlurb
     
-    codePaths <- liftM (reverse . sort) $ getRecursiveContents "Code"
+    -- render research pages
+    liftIO $ putStrLn "Generating research posts..."
+    forM_ researchPages $ renderChain [ "templates/post.html"
+                                  , "templates/default.html"
+                                  ]
+    
+    -- code stuff
+    codePaths <- liftM (reverse . sort) $ getRecursiveContents "code"
     let codePages = map createPage codePaths
     
-    let code = createListing "code.html" ["template/summary-item"]
+    let code = createListing "code.html" ["template/summary-item.html"]
                                     codePages [("title", Left "My Code")]
+    -- render code list
+    renderChain  ["code.html", "templates/default.html"] code
+    --- render code pages
+    forM_ codePages $ renderChain [ "templates/post.html"
+                                  , "templates/default.html"
+                                  ]
     
-    -- Render all posts list.
-    let posts = createListing "posts.html" ["templates/postitem.html"]
+    --- other projects
+    otherProjectPaths <- liftM (reverse . sort) $ getRecursiveContents "projects"
+    let otherProjectPages = map createPage otherProjectPaths
+    
+    let projects = createListing "projects.html" ["template/summary-item.html"]
+                                    otherProjectPages [("title", Left "My Other Projects")]
+    -- render projects list
+    let projectBlurb = createPage "projects.markdown"
+    renderChain  ["projects.html", "templates/default.html"] $ combine  projects projectBlurb
+    --- render project pages
+    forM_ otherProjectPages $ renderChain [ "templates/post.html"
+                                  , "templates/default.html"
+                                  ]
+    
+    -- Render all blogish posts list.
+    let posts = createListing "posts.html" ["templates/summary-item.html"]
                               postPages [("title", Left "All posts")]
     renderChain ["posts.html", "templates/default.html"] posts
 
