@@ -30,7 +30,7 @@ myHakyllConfig  absoluteUrl =
                        r2
 
 
-main = hakyllWithConfiguration  (myHakyllConfig "/Users/carter/carter-web") $ do
+main = hakyllWithConfiguration  (myHakyllConfig "www.cstheory.net") $ do
     -- Static directory.
     directory css "css"
     directory static "static"
