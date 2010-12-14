@@ -103,7 +103,7 @@ main = hakyllWithConfiguration  (myHakyllConfig "www.cstheory.net") $ do
 
     -- Render RSS feed.
     renderRss myFeedConfiguration $
-        map (>>> copyValue "body" "description") (take 3 postPages)
+        map (>>> copyValue "body" "description") (take 10 postPages)
 
 myFeedConfiguration = FeedConfiguration
     { feedUrl         = "feed.xml"

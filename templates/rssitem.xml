@@ -1,5 +1,6 @@
 <item>
     <title>$title</title>
-    <link>http://example.com/$url</link>
+    <link>$root/$url</link>
     <description>$title by $author</description>
+    <body>$body</body>
 </item>

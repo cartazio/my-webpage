@@ -1,5 +1,5 @@
 ---- blurb
-![](static/carter-profile.jpg)
+ ![](static/carter-profile.jpg)
 
 
 Hello! I'm Carter Schonwald, a PhD Student in the Computer Science Department of Dartmouth College

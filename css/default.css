@@ -1,12 +1,32 @@
 body {
+/*    width: 640px;*/
+/*    margin: 20px auto 20px auto;*/
+/*left: 20px;*/
+    padding: 80px 30px 80px 30px;
 }
+
+/*body#h2 {
+    text-align : center ;
+}*/
 
 div#navigation {
     text-align: center;
     border-bottom: 4px solid black;
+    padding: 12px;
 }
 
+h1 { text-align: center ;
+    
+    }
+
 div#navigation a {
+    
     color: white;
     text-decoration: none;
+    background-color: black ;
+    border-style: solid;
+    border-width: -2px;
+    border-color :gray;
+    padding: 5px 10px 5px 10px;
+    margin: 4px 10px 4px 10px;
 }
