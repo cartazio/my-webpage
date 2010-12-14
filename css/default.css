@@ -1,8 +1,8 @@
 body {
-/*    width: 640px;*/
+    width: 700px;
 /*    margin: 20px auto 20px auto;*/
 /*left: 20px;*/
-    padding: 80px 30px 80px 30px;
+    padding: 1em 4em 1em 4em;
 }
 
 div.figure img  {   display: block;   margin-left: auto;   margin-right: auto; }
@@ -12,6 +12,7 @@ div#navigation {
     border-bottom: 4px solid black;
     padding: 12px;
 }
+
 
 h1 { text-align: center ;
     
@@ -23,8 +24,28 @@ div#navigation a {
     text-decoration: none;
     background-color: black ;
     border-style: solid;
-    border-width: -2px;
+    border-width: 1px;
     border-color :gray;
-    padding: 5px 10px 5px 10px;
-    margin: 4px 10px 4px 10px;
+    padding:  5px 10px 5px 10px;
+    margin:  4px 10px 4px 10px;
+}
+
+div#footer {
+      margin-top : 5em;
+    margin-bottom :10px; 
+    border-top : 4px solid gray;
+    border-bottom: 4px solid gray;
+    padding: 12px;
+} 
+
+div#footer  a {
+    
+    color: black;
+    text-decoration: none;
+    background-color: gray ;
+    border-style: solid;
+    border-width: 1px;
+    border-color :gray;
+    padding:  5px 10px 5px 10px;
+   margin:  4px 10px 4px 10px;
 }

@@ -34,12 +34,13 @@
         </script>
     </head>
     <body>
-	<script type="text/javascript">
-          MathJax.Hub.Config({
-            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
-            "HTML-CSS": { scale: 100 }
-          });
-        </script>
+        <div class= "wrapper">
+	        <script type="text/javascript">
+                  MathJax.Hub.Config({
+                    extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+                    "HTML-CSS": { scale: 100 }
+                  });
+                </script>
    
         <h1>Carter Schonwald - $title</h1>
         <div id="navigation">
@@ -48,12 +49,18 @@
             <a href="$root/projects.html">Projects</a>
             <a href="$root/code.html">Code</a>
             <a href="$root/posts.html">Blog Post Index</a>
-            <a href="$root/feed.xml">Blog Feed</a>
         </div>
 
         $body
+            <div class="push"></>
+        </>    
+        <div class="footer">     If you want to read more,  <a href="$root/feed.xml">Subscribe to the rss feed</a>  </div>
     </body>
-    <div id="disqus_thread"></div>
+
+    
+   <!-- 
+   for now disable disqus
+   <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'carterstheory'; // required: replace example with your forum shortname
@@ -70,5 +77,5 @@
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a> -->
 </html>
