@@ -35,6 +35,7 @@ main = hakyllWithConfiguration  (myHakyllConfig "www.cstheory.net") $ do
     directory css "css"
     directory static "static"
     -- Find all post paths.
+    
     postPaths <- liftM (reverse . sort) $ getRecursiveContents "posts"
     let postPages = map createPage postPaths
 

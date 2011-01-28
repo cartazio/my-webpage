@@ -31,11 +31,15 @@ div#navigation a {
 }
 
 div#footer {
-      margin-top : 5em;
-    margin-bottom :10px; 
+    height:15px;
+    width:100%;
+    position:fixed
+    bottom:0px;
+    padding-top : 5px;
+/*    margin-bottom :10px; */
     border-top : 4px solid gray;
-    border-bottom: 4px solid gray;
-    padding: 12px;
+    /*border-bottom: 4px solid gray;
+        padding: 12px;*/
 } 
 
 div#footer  a {
@@ -46,6 +50,6 @@ div#footer  a {
     border-style: solid;
     border-width: 1px;
     border-color :gray;
-    padding:  5px 10px 5px 10px;
-   margin:  4px 10px 4px 10px;
+/*    padding:  5px 10px 5px 10px;*/
+/*   margin:  4px 10px 4px 10px;*/
 }
