@@ -15,7 +15,7 @@ mathJaxWriterOptions = defaultHakyllWriterOptions{writerHTMLMathMethod   =  Math
 
 mathPageCompiler ::  Compiler Resource (Page String)
 mathPageCompiler =
-   pageCompilerWith  defaultHakyllParserState mathJaxWriterOptions
+   pageCompilerWith  defaultHakyllParserState{stateParseRaw = True} mathJaxWriterOptions
 
 
 
@@ -36,7 +36,7 @@ main = hakyll $ do
     match "posts/*" $ do
         route   $ setExtension ".html"
         compile $ mathPageCompiler
-            -- >>> applyTemplateCompiler "templates/post.html"
+            >>> applyTemplateCompiler "templates/post.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
      
