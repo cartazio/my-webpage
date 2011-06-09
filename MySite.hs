@@ -48,13 +48,13 @@ main = hakyll $ do
      
 
     -- Render posts list
-    -- match  "posts.html" $ route idRoute
-    --  create "posts.html" $ constA mempty
-    --      >>> arr (setField "title" "All posts")
-    --      >>> requireAllA "posts/*" addPostList
-    --      >>> applyTemplateCompiler "templates/posts.html"
-    --      >>> applyTemplateCompiler "templates/default.html"
-    --      >>> relativizeUrlsCompiler
+    match  "posts.markdown" $ route idRoute
+     create "posts.html" $ constA mempty
+         >>> arr (setField "title" "All posts")
+         >>> requireAllA "posts/*" addPostList
+         >>> applyTemplateCompiler "templates/posts.html"
+         >>> applyTemplateCompiler "templates/default.html"
+         >>> relativizeUrlsCompiler
      
 
     -- Index
