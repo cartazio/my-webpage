@@ -17,17 +17,6 @@ mathPageCompiler ::  Compiler Resource (Page String)
 mathPageCompiler =
    pageCompilerWith  defaultHakyllParserState mathJaxWriterOptions
 
--- main :: IO ()
--- main = hakyll $ do
---     route   "css/*" idRoute
---     compile "css/*" compressCssCompiler
--- 
---     compile "templates/*" templateCompiler
---     forM_ ["research.markdown", "index.markdown", "other stkjdkfj"] $ \page -> do
---         route   page $ setExtension "html"
---         compile page $ pageCompiler
---             >>> applyTemplateCompiler "templates/default.html"
---             >>> relativizeUrlsCompiler
 
 
 
@@ -49,7 +38,8 @@ main = hakyll $ do
 
     -- Render posts list
     match  "posts.markdown" $ route idRoute
-     create "posts.html" $ constA mempty
+    route $ setExtension "html"
+    create "posts.html" $ constA mempty
          >>> arr (setField "title" "All posts")
          >>> requireAllA "posts/*" addPostList
          >>> applyTemplateCompiler "templates/posts.html"
