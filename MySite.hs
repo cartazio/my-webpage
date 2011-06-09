@@ -22,6 +22,11 @@ mathPageCompiler =
 
 main :: IO ()
 main = hakyll $ do
+    -- Compile static files
+    match "static/**" $ do
+        route idRoute
+        compile copyFileCompiler
+
     -- Compress CSS
     match "css/*" $ do
         route   idRoute
@@ -50,14 +55,13 @@ main = hakyll $ do
  
 
     -- Index
-    match  "home.markdown" $ route idRoute
-    route $ setExtension "html"
-    create "index.html" $ constA mempty
-        >>> arr (setField "title" "Home")
-        >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
-        >>> applyTemplateCompiler "templates/index.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
+    match  "index.markdown" $ do
+        route $ setExtension "html"
+        compile $ mathPageCompiler
+            >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
+            >>> applyTemplateCompiler "templates/index.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
 
     -- Render RSS feed
     match  "rss.xml" $ route idRoute

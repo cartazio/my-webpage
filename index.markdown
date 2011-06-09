@@ -1,7 +1,7 @@
-___
+---
 title: Carter's Home Page
 author: Carter Schonwald
---- blurb
+---
 
  ![](static/carter-profile.jpg)
 
