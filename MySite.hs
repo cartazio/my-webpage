@@ -11,11 +11,12 @@ import Hakyll
 
 -- import Hakyll.Web.Pandoc
 
-mathJaxWriterOptions = defaultHakyllWriterOptions{writerHTMLMathMethod   =  MathJax "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" }
+mathJaxWriterOptions = defaultHakyllWriterOptions{writerHTMLMathMethod   =  MathJax "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" }
 
 mathPageCompiler ::  Compiler Resource (Page String)
 mathPageCompiler =
-   pageCompilerWith  defaultHakyllParserState{stateParseRaw = True} mathJaxWriterOptions
+   pageCompilerWith  defaultHakyllParserState{stateParseRaw = True}
+                     mathJaxWriterOptions
 
 
 
