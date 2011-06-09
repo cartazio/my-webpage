@@ -1,6 +1,6 @@
 <item>
     <title>$title</title>
-    <link>$root/$url</link>
-    <description>$title by $author</description>
-    <body>$body</body>
+    <link>$url</link>
+    <description>$title$ by $author$</description>
+    <body>$body$</body>
 </item>
