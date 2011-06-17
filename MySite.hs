@@ -15,7 +15,7 @@ mathJaxWriterOptions = defaultHakyllWriterOptions{writerHTMLMathMethod   =  Math
 
 mathPageCompiler ::  Compiler Resource (Page String)
 mathPageCompiler =
-   pageCompilerWith  defaultHakyllParserState{stateParseRaw = True}
+   pageCompilerWith  defaultHakyllParserState  --{stateParseRaw  = False}
                      mathJaxWriterOptions
 
 
@@ -32,6 +32,7 @@ main = hakyll $ do
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
+
 
     -- Render posts
     match "posts/*" $ do
@@ -87,5 +88,5 @@ feedConfiguration = FeedConfiguration
     { feedTitle       = "Carter's Web Page"
     , feedDescription = "Research and Blog Site"
     , feedAuthorName  = "Carter Tazio Schonwald"
-    , feedRoot        = "http://example.com"
+    , feedRoot        = "http://www.cstheory.net"
     }

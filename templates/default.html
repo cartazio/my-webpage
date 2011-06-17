@@ -11,7 +11,8 @@
               type="application/rss+xml"
               title="Carter's Page"
               href="/rss.xml" />
-      <link rel="icon" type="image/png" href="/static/mu64.png"/>
+                
+      <link rel="icon" type="image/png" href="static/mu64.png"/>
       <script type="text/javascript">
 
         var _gaq = _gaq || [];
@@ -26,13 +27,22 @@
 
       </script>   
       
-   
+      <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {  processEscapes: true
+        }
+      });
+      </script>
       
       <script type="text/javascript"
-         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
       </script>
    </head>
-        <h1>Carter Schonwald - $title$</h1>
+   
+   
+     
+<body>
+       <h1>Carter Schonwald - $title$</h1>
         <div id="navigation">
             <a href="/index.html">Home</a>
             <a href="/research.html">Research</a>
@@ -40,7 +50,6 @@
             <a href="/code.html">Code</a>
             <a href="/posts.html">Blog Post Index</a>
         </div>
-<body>
 
         $body$
     </body>        
