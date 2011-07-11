@@ -3,6 +3,7 @@ title: Home Page
 author: Carter Schonwald
 ---
 
+
  ![](static/carter-profile.jpg)
 
 
