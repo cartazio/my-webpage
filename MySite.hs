@@ -35,24 +35,24 @@ main = hakyll $ do
 
 
     -- Render posts
-    match "posts/*" $ do
-        route   $ setExtension ".html"
-        compile $ mathPageCompiler
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
-            >>> relativizeUrlsCompiler
+    -- match "posts/*" $ do
+    --      route   $ setExtension ".html"
+    --      compile $ mathPageCompiler
+    --          >>> applyTemplateCompiler "templates/post.html"
+    --          >>> applyTemplateCompiler "templates/default.html"
+    --          >>> relativizeUrlsCompiler
      
 
     -- Render posts list
-    match  "posts.markdown" $ route idRoute
-    route $ setExtension "html"
-    create "posts.html" $ constA mempty
-         >>> arr (setField "title" "All posts")
-         >>> requireAllA "posts/*" addPostList
-         >>> applyTemplateCompiler "templates/posts.html"
-         >>> applyTemplateCompiler "templates/default.html"
-         -- >>> mathPageCompiler
-         >>> relativizeUrlsCompiler
+    -- match  "posts.markdown" $ route idRoute
+    --   route $ setExtension "html"
+    --   create "posts.html" $ constA mempty
+    --        >>> arr (setField "title" "All posts")
+    --        >>> requireAllA "posts/*" addPostList
+    --        >>> applyTemplateCompiler "templates/posts.html"
+    --        >>> applyTemplateCompiler "templates/default.html"
+    --        -- >>> mathPageCompiler
+    --        >>> relativizeUrlsCompiler
 
  
 
@@ -60,15 +60,38 @@ main = hakyll $ do
     match  "index.markdown" $ do
         route $ setExtension "html"
         compile $ mathPageCompiler
-            >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
+            -- >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
             >>> applyTemplateCompiler "templates/index.html"
             >>> applyTemplateCompiler "templates/default.html"
             >>> relativizeUrlsCompiler
 
-    -- Render RSS feed
-    match  "rss.xml" $ route idRoute
-    create "rss.xml" $
-        requireAll_ "posts/*" >>> renderRss feedConfiguration
+    match  "research.markdown" $ do
+        route $ setExtension "html"
+        compile $ mathPageCompiler
+            -- >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
+            -- >>> applyTemplateCompiler "templates/index.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+
+    match  "code.markdown" $ do
+        route $ setExtension "html"
+        compile $ mathPageCompiler
+            -- >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
+            -- >>> applyTemplateCompiler "templates/index.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+            
+    match  "projects.markdown" $ do
+        route $ setExtension "html"
+        compile $ mathPageCompiler
+            -- >>> requireAllA "posts/*" (id *** arr (take 3 . reverse . chronological) >>> addPostList)
+            -- >>> applyTemplateCompiler "templates/index.html"
+            >>> applyTemplateCompiler "templates/default.html"
+            >>> relativizeUrlsCompiler
+    -- -- Render RSS feed
+    --  match  "rss.xml" $ route idRoute
+    --  create "rss.xml" $
+    --      requireAll_ "posts/*" >>> renderRss feedConfiguration
 
     -- Read templates
     match "templates/*" $ compile templateCompiler
@@ -76,17 +99,17 @@ main = hakyll $ do
 -- | Auxiliary compiler: generate a post list from a list of given posts, and
 -- add it to the current page under @$posts@
 --
-addPostList :: Compiler (Page String, [Page String]) (Page String)
-addPostList = setFieldA "posts" $
-    arr (reverse . chronological)
-        >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
-        >>> arr mconcat
-        >>> arr pageBody
-
-feedConfiguration :: FeedConfiguration
-feedConfiguration = FeedConfiguration
-    { feedTitle       = "Carter's Web Page"
-    , feedDescription = "Research and Blog Site"
-    , feedAuthorName  = "Carter Tazio Schonwald"
-    , feedRoot        = "http://www.cstheory.net"
-    }
+-- addPostList :: Compiler (Page String, [Page String]) (Page String)
+-- addPostList = setFieldA "posts" $
+--     arr (reverse . chronological)
+--         >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
+--         >>> arr mconcat
+--         >>> arr pageBody
+-- 
+-- feedConfiguration :: FeedConfiguration
+-- feedConfiguration = FeedConfiguration
+--     { feedTitle       = "Carter's Web Page"
+--     , feedDescription = "Research and Blog Site"
+--     , feedAuthorName  = "Carter Tazio Schonwald"
+--     , feedRoot        = "http://www.cstheory.net"
+--     }

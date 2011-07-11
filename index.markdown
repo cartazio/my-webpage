@@ -1,5 +1,5 @@
 ---
-title: Carter's Home Page
+title: Home Page
 author: Carter Schonwald
 ---
 
